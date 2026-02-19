@@ -2,7 +2,15 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+app.locals.pretty = true;
+app.set('view engine', 'pug'); // 템블릿 엔진 연결
+app.set('views','./views'); //생략가능
+
 app.use(express.static('public')); //정적파일(public 디렉토리에 정적파일 넣어놓기)
+
+app.get('/template', (req, res) => {
+  res.render('temp', {time: Date(), _title:'Pug'});
+})
 
 app.get('/route', (req, res) => {
   res.send('<h1>Hello Router!</h1>, <img src="/dddd.jpg">')
