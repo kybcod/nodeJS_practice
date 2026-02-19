@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "uglify-js": "^3.19.3",
+    "underscore": "^1.13.7"
+  },
+  "name": "nodejs_practice",
+  "version": "1.0.0",
+  "main": "pretty.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
