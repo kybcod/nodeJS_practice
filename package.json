@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "express": "^5.2.1",
     "uglify-js": "^3.19.3",
     "underscore": "^1.13.7"
   },
