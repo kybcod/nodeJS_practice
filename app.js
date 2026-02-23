@@ -8,6 +8,7 @@ app.set('views','./views'); //생략가능
 
 app.use(express.static('public')); //정적파일(public 디렉토리에 정적파일 넣어놓기)
 
+// query 객체
 app.get('/topic',function(req,res){
   var topics = [
       'Javascript is ...',
@@ -23,6 +24,11 @@ app.get('/topic',function(req,res){
     ${topics[req.query.id]}
   `
   res.send(output);
+})
+
+// 시멘틱 url
+app.get('/topic/:id/:mode',function(req,res){
+  res.send(req.params.id+','+req.params.mode);
 })
 
 app.get('/template', (req, res) => {
