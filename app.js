@@ -24,12 +24,24 @@ app.get('/topic',function(req,res){
     ${topics[req.query.id]}
   `
   res.send(output);
-})
+});
 
 // 시멘틱 url
 app.get('/topic/:id/:mode',function(req,res){
   res.send(req.params.id+','+req.params.mode);
-})
+});
+
+// form
+app.get('/form',function(req,res){
+  res.render('form');
+});
+
+app.get('/form_receiver',function(req,res){
+  var title = req.query.title;
+  var description = req.query.description;
+  res.send(title+','+description);
+
+});
 
 app.get('/template', (req, res) => {
   res.render('temp', {time: Date(), _title:'Pug'});
