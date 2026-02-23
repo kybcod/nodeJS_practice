@@ -8,6 +8,23 @@ app.set('views','./views'); //생략가능
 
 app.use(express.static('public')); //정적파일(public 디렉토리에 정적파일 넣어놓기)
 
+app.get('/topic',function(req,res){
+  var topics = [
+      'Javascript is ...',
+      'NodJs is ...',
+      'Express is ...'
+
+  ];
+
+  var output = `
+    <a href="/topic?id=0">Javascript</a><br>
+    <a href="/topic?id=1">Nodejs</a><br>
+    <a href="/topic?id=2">Express</a><br>
+    ${topics[req.query.id]}
+  `
+  res.send(output);
+})
+
 app.get('/template', (req, res) => {
   res.render('temp', {time: Date(), _title:'Pug'});
 })
