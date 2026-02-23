@@ -1,4 +1,5 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const app = express()
 const port = 3000
 
@@ -7,6 +8,7 @@ app.set('view engine', 'pug'); // 템블릿 엔진 연결
 app.set('views','./views'); //생략가능
 
 app.use(express.static('public')); //정적파일(public 디렉토리에 정적파일 넣어놓기)
+app.use(bodyParser.urlencoded({extended: false}));
 
 // query 객체
 app.get('/topic',function(req,res){
@@ -40,8 +42,14 @@ app.get('/form_receiver',function(req,res){
   var title = req.query.title;
   var description = req.query.description;
   res.send(title+','+description);
-
 });
+
+app.post('/form_receiver',function(req,res){
+  var title = req.body.title;
+  var description = req.body.description;
+  res.send(title+','+description);
+});
+
 
 app.get('/template', (req, res) => {
   res.render('temp', {time: Date(), _title:'Pug'});
